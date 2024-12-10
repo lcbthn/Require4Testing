@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+    <title>Test Cases</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/styles.css"/>
+</h:head>
+<h:body>
+    <div class="container">
+        <h1>Test Cases</h1>
+        <h:form>
+            <h:outputLabel for="title" value="Title:"/>
+            <h:inputText id="title" value="#{testCaseBean.testCase.title}" />
+            <h:outputLabel for="description" value="Description:"/>
+            <h:inputText id="description" value="#{testCaseBean.testCase.description}" />
+            <h:commandButton value="Save" action="#{testCaseBean.saveTestCase}" />
+        </h:form>
+        <h:dataTable value="#{testCaseBean.allTestCases}" var="tc">
+            <h:column>
+                <f:facet name="header">Title</f:facet>
+                #{tc.title}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Description</f:facet>
+                #{tc.description}
+            </h:column>
+        </h:dataTable>
+    </div>
+</h:body>
+</html>

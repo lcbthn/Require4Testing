@@ -1,21 +1,21 @@
-package com.require4testing.model;
+package com.require4testing.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-@Entity  // Diese Annotation kennzeichnet die Klasse als JPA-Entität
-public class Requirement {
-
-    @Id  // Markiert das Feld als Primärschlüssel
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Primärschlüssel wird automatisch generiert (Auto-Increment)
+@Entity
+public class TestCase {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
+
     private String description;
 
-    // Getter und Setter
+    @ManyToOne
+    private Requirement requirement;
+
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -38,5 +38,13 @@ public class Requirement {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Requirement getRequirement() {
+        return requirement;
+    }
+
+    public void setRequirement(Requirement requirement) {
+        this.requirement = requirement;
     }
 }
